@@ -1,0 +1,22 @@
+{
+  "name": "keto-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.15.5"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.0"
+  },
+  "scripts": {
+    "install": "(cd react-ui && npm install) && (cd server && npm install)",
+    "start": "concurrently \"cd react-ui && npm start\" \"cd server && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mong04/keto-app.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
