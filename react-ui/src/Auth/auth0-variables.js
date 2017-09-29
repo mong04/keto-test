@@ -4,5 +4,5 @@ export const AUTH_CONFIG = {
   // Local
   // callbackUrl: 'http://localhost:3000/callback'
   // Heroku
-  callbackUrl: 'https:kdiet.herokuapp.com/callback'
+  callbackUrl: 'https://kdiet.herokuapp.com/callback'
 }
