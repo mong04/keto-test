@@ -6,11 +6,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-const staticFiles = express.static(path.join(__dirname, '../../react-ui/build'));
+const router = express.Router();
 
+const staticFiles = express.static(path.join(__dirname, '../../react-ui/build'));
 app.use(staticFiles);
 
-const router = express.Router();
 router.get('/api', (req, res) => {
     const cities = [
         {name: 'New York City', population: 8175133},
@@ -21,6 +21,8 @@ router.get('/api', (req, res) => {
 })
 
 app.use(router);
+
+app.use('/*', staticFiles)
 
 app.set('port', (process.env.PORT || 5000));
 

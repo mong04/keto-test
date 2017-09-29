@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mong04/keto-app.git"
+  },
+  "license": "ISC",
   "engines": {
     "node": "6.10.1"
   },
   "dependencies": {
     "express": "^4.15.5"
-  },
-  "devDependencies": {
-    "concurrently": "^3.5.0"
   },
   "scripts": {
     "install": "(cd react-ui && npm install) && (cd server && npm install)",
@@ -19,10 +21,8 @@
     "start:prod": "cd server && npm run start:prod",
     "heroku-postbuild": "yarn build"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mong04/keto-app.git"
+  "devDependencies": {
+    "concurrently": "^3.5.0"
   },
-  "author": "",
-  "license": "ISC"
+  "author": ""
 }
