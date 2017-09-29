@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "6.10.1"
+  },
   "dependencies": {
     "express": "^4.15.5"
   },
@@ -11,7 +14,10 @@
   },
   "scripts": {
     "install": "(cd react-ui && npm install) && (cd server && npm install)",
-    "start": "concurrently \"cd react-ui && npm start\" \"cd server && npm start\""
+    "start": "concurrently \"cd react-ui && npm start\" \"cd server && npm start\"",
+    "build": "concurrently \"cd client && npm build\" \"cd server && npm build\"",
+    "start:prod": "cd server && npm run start:prod",
+    "heroku-postbuild": "yarn build"
   },
   "repository": {
     "type": "git",

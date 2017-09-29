@@ -15,7 +15,7 @@ class API extends Component {
               <div>
                 <ul>
                     {this.state.cities.map( city => {
-                        return <li key{...city.name}><b>{city.name}</b>: {city.population}</li>
+                        return <li key{...city.name}><p>City: <b>{city.name}</b></p> <p>Population: {city.population}</p></li>
                     })}
                 </ul>
               </div>
