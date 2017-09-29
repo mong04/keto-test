@@ -1,31 +1,27 @@
-import bodyParser from 'body-parser'
-import express from 'express'
-import path from 'path'
+const express = require('express');
+const path = require('path');
+
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+// Priority serve any static files.
+app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
-const router = express.Router();
+// Answer API requests.
+app.get('/api', function (req, res) {
+  const cities = [
+    {name: 'New York City', population: 8175133},
+    {name: 'Los Angeles', population: 3792621},
+    {name: 'Chicago', population: 2695598}
+  ];
+  res.json(cities);
+});
 
-const staticFiles = express.static(path.join(__dirname, '../../react-ui/build'));
-app.use(staticFiles);
+// All remaining requests return the React app, so it can handle routing.
+app.get('*', function(request, response) {
+  response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
+});
 
-router.get('/api', (req, res) => {
-    const cities = [
-        {name: 'New York City', population: 8175133},
-        {name: 'Los Angeles', population: 3792621},
-        {name: 'Chicago', population: 2695598}
-    ]
-    res.json(cities);
-})
-
-app.use(router);
-
-app.use('/*', staticFiles)
-
-app.set('port', (process.env.PORT || 5000));
-
-app.listen(app.get('port'), () => {
-    console.log(`Listening on ${app.get('port')}`)
-})
+app.listen(PORT, function () {
+  console.log(`Listening on port ${PORT}`);
+});
