@@ -19,7 +19,7 @@
     "start": "concurrently \"cd react-ui && npm start\" \"cd server && npm start\"",
     "build": "concurrently \"cd client && npm build\" \"cd server && npm build\"",
     "start:prod": "cd server && npm run start:prod",
-    "heroku-postbuild": "yarn build"
+    "heroku-postbuild": "npm build"
   },
   "devDependencies": {
     "concurrently": "^3.5.0"
